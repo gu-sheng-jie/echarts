@@ -1,56 +1,55 @@
 
+(function () {
+    //  365天 90天 30天 24小时 ===================
 
-//  365天 90天 30天 24小时 ===================
+    // 获取天数
+    var li_date = document.getElementsByClassName('li-date')
+    // 获取 订单量\销售额
+    var data_p = document.getElementsByClassName('data-p')
+    // 获取 天数 的大盒子
+    var date_box = document.getElementsByClassName('date-box')[0]
+    var timer_1 = null  // 操作定时器
+    var index = 0
 
-// 获取天数
-var li_date = document.getElementsByClassName('li-date')
-// 获取 订单量\销售额
-var data_p = document.getElementsByClassName('data-p')
+    for (var i = 0; i < li_date.length; i++) {
+        li_date[i].setAttribute('index', i)
 
-for (var i = 0; i < li_date.length; i++) {
-    li_date[i].setAttribute('index', i)
+        li_date[i].onclick = function () {
+            index = this.getAttribute('index')
 
-    li_date[i].onclick = function () {
-        var index = this.getAttribute('index')
+            for (var k = 0; k < li_date.length; k++) {
+                // 控制 字体样式
+                li_date[k].classList.remove('li-color')
+                li_date[index].classList.add('li-color')
 
-        for (var k = 0; k < li_date.length; k++) {
-            // 控制 字体样式
-            li_date[k].classList.remove('li-color')
-            li_date[index].classList.add('li-color')
+                // 控制 数据变化
+                data_p[k].classList.add('data-p1')
+                data_p[index].classList.remove('data-p1')
 
-            // 控制 数据变化
-            data_p[k].classList.add('data-p1')
-            data_p[index].classList.remove('data-p1')
-
+            }
         }
     }
-}
-//  自动切换 =======================
+    //  自动切换 =======================
 
-
-// 获取 天数 的大盒子
-var date_box = document.getElementsByClassName('date-box')[0]
-var timer_1 = null  // 操作定时器
-var index = 0
-
-function auto() {
-    timer_1 = setInterval(function () {
-        index++
-        if (index >= li_date.length) {
-            index = 0
-        }
-        li_date[index].click()
-    }, 2000)
-}
-auto()
-
-date_box.onmouseenter = function () {
-    clearInterval(timer_1)
-}
-date_box.onmouseleave = function () {
+    function auto() {
+        timer_1 = setInterval(function () {
+            index++
+            if (index >= li_date.length) {
+                index = 0
+            }
+            li_date[index].click()
+        }, 2000)
+    }
     auto()
-};
 
+    date_box.onmouseenter = function () {
+        clearInterval(timer_1)
+    }
+    date_box.onmouseleave = function () {
+        auto()
+    };
+
+}());
 
 
 (function () {
@@ -155,11 +154,16 @@ date_box.onmouseleave = function () {
 
     // 找到 年 季 月 日 
     var data_ = document.getElementsByClassName('time-span')
+    var data_span = document.getElementsByClassName('time-span')
+    //  大盒子
+    var sell_box = document.getElementsByClassName('sell-box')[0]
+    var index = 0
+    var timer = null
 
     for (var i = 0; i < data_.length; i++) {
         data_[i].setAttribute('index', i)
         data_[i].onclick = function () {
-            var index = this.getAttribute('index')
+            index = this.getAttribute('index')
 
             for (var k = 0; k < data_.length; k++) {
                 data_[k].classList.remove('time-color')
@@ -175,6 +179,24 @@ date_box.onmouseleave = function () {
 
         }
     }
+
+    function auto_sell() {
+        timer = setInterval(function () {
+            index++
+            if (index >= data_span.length) {
+                index = 0
+            }
+            data_span[index].click()
+        }, 2000)
+    }
+    auto_sell()
+    sell_box.onmouseenter = function () {
+        clearInterval(timer)
+    }
+    sell_box.onmouseleave = function () {
+        auto_sell()
+    };
+
     window.addEventListener('load', function () {
         myChart.resize()
     })
@@ -182,31 +204,8 @@ date_box.onmouseleave = function () {
         myChart.resize()
     })
 
-}())
+}());
 
-
-var data_span = document.getElementsByClassName('time-span')
-var sell_box = document.getElementsByClassName('sell-box')[0]
-
-var num = 0
-var timer_2 = null
-
-function auto_sell() {
-    timer_2 = setInterval(function () {
-        num++
-        if (num >= data_span.length) {
-            num = 0
-        }
-        data_span[num].click()
-    }, 2000)
-}
-auto_sell()
-sell_box.onmouseenter = function () {
-    clearInterval(timer_2)
-}
-sell_box.onmouseleave = function () {
-    auto_sell()
-};
 
 
 //  雷达图 ============================
