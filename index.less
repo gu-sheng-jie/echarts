@@ -1,0 +1,561 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    color: black;
+}
+
+body {
+    background: url(./images/bg.jpg)no-repeat;
+    background-size: cover;
+}
+
+// 边框样式的共用部分
+.border-share {
+    border: .1rem solid;
+    border-image-source: url(./images/border.png);
+    border-image-slice: 51 38 20 132;
+    border-image-width: 4.4rem 4rem 2.3rem 13.1rem;
+    border-image-repeat: stretch;
+}
+
+// span 彩色小长点的共用部分
+.span-share {
+    display: inline-block;
+    width: 0.35rem;
+    height: 1.1rem;
+    border-radius: 25%;
+}
+
+.box {
+    min-height: 50rem;
+    // max-width: 1920px;
+    min-width: 1080px;
+    padding: 0 2rem;
+    background: url(./images/logo.png)no-repeat -.3rem 0rem;
+    background-size: contain;
+    display: flex;
+    margin: 0 auto;
+
+    // 左边
+    .box_left {
+        flex: 3;
+        margin-top: 7rem;
+
+        // 设备总数标题
+        &>div:nth-of-type(1) {
+            height: 10rem;
+            margin-bottom: 2rem;
+            padding: 1rem 0rem 0rem 3.5rem;
+
+            &>ul {
+                // background-color: skyblue;
+
+                display: flex;
+                flex-wrap: wrap;
+                align-content: space-between;
+
+
+                &>li {
+                    width: 25%;
+                    height: 4rem;
+                    line-height: 4rem;
+                    color: white;
+                    font-size: 2.4rem;
+                    font-weight: 500;
+                }
+
+                &>li:nth-of-type(5),
+                &>li:nth-of-type(6),
+                &>li:nth-of-type(7),
+                &>li:nth-of-type(8) {
+                    line-height: 2.8rem;
+                    font-size: 1.2rem;
+                    color: rgb(76, 155, 253);
+                }
+            }
+        }
+
+        // 故障设备监控
+        &>div:nth-of-type(2) {
+            height: 40rem;
+            margin-bottom: 2rem;
+            padding: 1rem 1.2rem;
+
+            // 版心
+            &>div:nth-of-type(1) {
+                width: 100%;
+                padding: .5rem 1rem;
+
+                // 标题
+                &>p {
+                    font-size: 1.8rem;
+                    line-height: 3.5rem;
+                    margin-bottom: 5px;
+
+                    &>.facility {
+                        color: white;
+                    }
+
+                    &>span {
+                        margin-right: 1rem;
+                        color: rgb(22, 80, 196);
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    &>span:nth-of-type(2) {
+                        display: inline-block;
+                        background-color: rgb(111, 238, 239);
+                        height: 3.5rem;
+                        width: .3rem;
+                        vertical-align: bottom;
+                    }
+                }
+
+                // 故障页面\异常页面
+                &>div:nth-of-type(1),
+                &>div:nth-of-type(2) {
+                    height: 32rem;
+
+                    &>p {
+                        height: 3.5rem;
+                        line-height: 3.5rem;
+                        background-color: rgba(155, 218, 244, .15);
+                        color: #68d8fe;
+                        font-size: 1.2rem;
+                        display: flex;
+
+                        &>span:nth-of-type(1) {
+                            width: 25%;
+                        }
+
+                        &>span:nth-of-type(2) {
+                            width: 60%;
+                        }
+
+                        &>span:nth-of-type(3) {
+                            width: 20%;
+                        }
+                    }
+
+                    &>div {
+                        height: 28.5rem;
+                        overflow: hidden;
+
+
+                        &>ul {
+                            font-size: 1.2rem;
+
+                            &>li {
+                                height: 3.2rem;
+                                line-height: 3.2rem;
+                                color: #61a8ff;
+                                display: flex;
+
+                                &>span:nth-of-type(1) {
+                                    width: 25%;
+                                }
+
+                                &>span:nth-of-type(2) {
+                                    width: 60%;
+                                }
+
+                                &>span:nth-of-type(3) {
+                                    width: 20%;
+                                }
+                            }
+
+                            &>li:hover {
+                                // background-color: rgba(176, 233, 255, .7);
+                                background-image: linear-gradient(to right, skyblue, pink);
+                                cursor: pointer;
+                                color: rgb(71, 71, 71);
+                                font-size: 1.4rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                }
+
+                &>div:nth-of-type(2) {
+                    display: none;
+                }
+            }
+        }
+
+        // 点位分布统计
+        &>div:nth-of-type(3) {
+            height: 28rem;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+
+            &>p {
+                font-size: 1.8rem;
+                padding: .5rem 1rem;
+                color: white;
+            }
+
+            &>div {
+                width: 100%;
+                height: 21rem;
+                // background-color: skyblue;
+                display: flex;
+
+                &>div:nth-of-type(1) {
+                    flex: 1.8;
+                }
+
+                &>div:nth-of-type(2) {
+                    flex: 1;
+                    background: url(./images/rect.png) no-repeat;
+                    background-size: 100% 100%;
+                    padding: 3.5rem 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-evenly;
+
+                    &>p {
+                        width: 100%;
+                        height: 6rem;
+                        padding: 1rem 2rem;
+                        color: white;
+                        font-size: 2rem;
+
+                        &>span:nth-of-type(2) {
+                            font-size: 1.4rem;
+                            color: rgb(248, 171, 5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 中间
+    .box_conter {
+        flex: 4;
+        margin: 0 1.5rem;
+        margin-top: 10rem;
+
+        &>p {
+            font-size: 1.6rem;
+            color: white;
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            background: url(./images/shebei.png)no-repeat 0rem center;
+            background-size: 2rem 2rem;
+        }
+
+        &>div:nth-of-type(1) {
+            height: 45rem;
+            background-color: rgba(197, 237, 253, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        //  全国用户总量统计 （柱状图）
+        &>div:nth-of-type(2) {
+            height: 28rem;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem 1rem .8rem;
+
+            &>p {
+                color: white;
+                font-size: 1.7rem;
+                padding: .5rem 1.5rem;
+            }
+
+            &>div {
+                width: 100%;
+                height: 20.5rem;
+                display: flex;
+
+                &>div:nth-of-type(1) {
+                    flex: 3;
+                    // background-color: skyblue;
+                }
+
+                &>div:nth-of-type(2) {
+                    flex: 1;
+                    margin-left: 1rem;
+                    background: url(./images/rect.png);
+                    background-size: 100% 100%;
+                    padding: 3rem 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-evenly;
+
+                    &>p {
+                        width: 100%;
+                        height: 6rem;
+                        padding: 1rem 2rem;
+                        color: white;
+                        font-size: 2rem;
+
+                        &>span:nth-of-type(2) {
+                            font-size: 1.4rem;
+                            color: rgb(76, 253, 226);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 右边
+    .box_right {
+        flex: 3;
+        margin-top: 7rem;
+
+        &>div {
+            margin-bottom: 2rem;
+        }
+
+        //  订单
+        &>div:nth-of-type(1) {
+            height: 14rem;
+            padding: 1.5rem 1.5rem;
+
+            &>ul {
+                display: flex;
+
+                &>li {
+                    width: 7rem;
+                    height: 2rem;
+                    line-height: 2rem;
+                    font-size: 1.6rem;
+                    text-align: center;
+                    color: rgb(25, 80, 196);
+                    margin-right: 1px;
+                    border-right: .2rem solid rgb(0, 242, 241);
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                &>li:last-of-type {
+                    width: 8rem;
+                    border-right: transparent;
+                    padding-left: 1.6rem;
+                }
+
+                &>li:nth-of-type(1) {
+                    padding-right: 1.6rem;
+                    margin-left: 1.2rem;
+                }
+
+                .li-color {
+                    color: white;
+                    font-size: 1.8rem;
+                }
+            }
+
+            &>.data-p {
+                height: 4.5rem;
+                line-height: 4.5rem;
+                margin-top: .8rem;
+                display: flex;
+
+                &>span {
+                    flex: 1;
+                    color: white;
+                    font-size: 2.2rem;
+                }
+            }
+
+            .data-p1 {
+                display: none;
+            }
+
+            &>div {
+                height: 3.2rem;
+                line-height: 2rem;
+                font-size: 1.4rem;
+                color: rgb(76, 155, 253);
+                display: flex;
+
+                &>p {
+                    flex: 1;
+
+                    &>span {
+                        margin-right: .5rem;
+                    }
+                }
+            }
+        }
+
+        //  销售额统计
+        &>div:nth-of-type(2) {
+            height: 22rem;
+            padding: 1rem 2.5rem;
+
+            &>div:nth-of-type(1) {
+                height: 3rem;
+                margin-bottom: 1rem;
+
+                &>span {
+                    margin-left: 2rem;
+                    color: rgb(11, 172, 230);
+                    font-size: 1.4rem;
+                    line-height: 3rem;
+                    padding: .2rem .4rem;
+                    border-radius: .3rem;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                &>span:nth-of-type(1) {
+                    color: white;
+                    font-size: 1.8rem;
+                    padding: 0;
+                    padding-right: 2rem;
+                    margin: 0;
+                    border-right: 0.2rem solid #00f2f1;
+                    background-color: transparent;
+
+                }
+
+                &>.time-color {
+                    color: white;
+                    background-color: rgb(76, 155, 253);
+                }
+            }
+
+            &>div:nth-of-type(2) {
+                height: 15rem;
+            }
+        }
+
+        // 渠道分布(雷达图) \ 一季度销售进度
+        &>div:nth-of-type(3) {
+            height: 20rem;
+            // display: flex;
+
+            &>div:nth-of-type(1) {
+                width: 52%;
+                height: 20rem;
+                margin-right: 1.5rem;
+                float: left;
+
+                &>p {
+                    // background-color: orange;
+                    font-size: 1.8rem;
+                    padding: 1rem 2.3rem;
+                    color: white;
+                }
+
+                &>div {
+                    height: 14rem;
+                }
+            }
+
+            &>div:nth-of-type(2) {
+                width: 44%;
+                height: 20rem;
+                padding: 1rem 1.5rem;
+                float: left;
+
+                &>p:nth-of-type(1) {
+                    color: white;
+                    margin-top: .3rem;
+                    font-size: 1.8rem;
+                }
+
+                &>p:nth-of-type(2) {
+                    color: white;
+                    height: 8rem;
+                    line-height: 8rem;
+                    font-size: 3rem;
+                    text-align: center;
+
+                    &>span {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                &>p:nth-of-type(3) {
+                    color: white;
+                    height: 3rem;
+                    line-height: 3rem;
+                    font-size: 2.4rem;
+                    text-align: center;
+                }
+
+                &>div:nth-of-type(1) {
+                    margin-top: 1rem;
+                    display: flex;
+
+                    &>p {
+                        flex: 1;
+                        font-size: 1.4rem;
+                        color: rgb(76, 233, 204);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        // 完成进度统计（水滴图）
+        &>div:nth-of-type(4) {
+            height: 20rem;
+            padding: 1rem 2rem;
+
+            &>p {
+                font-size: 1.8rem;
+                color: white;
+                // background-color: orange;
+            }
+
+            &>div {
+                display: flex;
+
+                &>div:nth-of-type(1) {
+                    // background-color: orange;
+                    height: 14rem;
+                    width: 68%;
+                    padding-right: 2rem;
+                }
+
+                &>div:nth-of-type(2) {
+
+                    background: url(./images/rect.png)no-repeat;
+                    background-size: 100% 100%;
+                    height: 14rem;
+                    width: 32%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    &>p {
+                        width: 100%;
+                        height: 6rem;
+                        text-align: center;
+                        color: white;
+                        font-size: 1.8rem;
+                        padding-top: 1rem;
+
+                        &>span:nth-of-type(2) {
+                            font-size: 1.4rem;
+                            color: rgb(248, 171, 5);
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,16 @@
+/* 故障界面 滚动动画 */
+@keyframes fault_1 {
+    0% {}
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+#fault-wrap-1 {
+    animation: fault_1 18s linear infinite;
+}
+
+#fault-wrap-1:hover {
+    animation-play-state: paused;
+}
